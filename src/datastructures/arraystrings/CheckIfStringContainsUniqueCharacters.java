@@ -27,7 +27,12 @@ public class CheckIfStringContainsUniqueCharacters {
 		s.close();
 	}
 
-	private static boolean isUniqueChar_1(String inputString){
+	
+	/**
+	 * Checks a char with every other character in string. So complexity is O(n*2)
+	 */
+	private static boolean isUniqueChar_1(String inputString) {
+		
 		boolean isUnique = true;
 
 		for(int i = 0; i < inputString.length(); i++) {
@@ -42,6 +47,10 @@ public class CheckIfStringContainsUniqueCharacters {
 		return isUnique;
 	}
 
+	/**
+	 * Create a boolean array, and store true at index location corresponding to character in string. 
+	 * If character occurs again, the value would be true at the same index, and we will know char is repeated.
+	 */
 	private static boolean isUniqueChar_2(String inputString){
 
 		boolean[] boolArray = new boolean[256];
