@@ -1,4 +1,4 @@
-package datastructures.linkedlists.singly;
+package datastructures.linkedlists.practice.singly;
 
 //page 190 : DS&A - Robert Lafore example
 

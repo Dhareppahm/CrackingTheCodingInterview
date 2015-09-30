@@ -1,4 +1,4 @@
-package datastructures.linkedlists.doubly;
+package datastructures.linkedlists.practice.doubly;
 
 class Link {
 	int data;
