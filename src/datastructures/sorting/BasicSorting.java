@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class BasicSorting {
 
-	//BUBBLE SORT : check Wiipedia
+	//BUBBLE SORT : check Wikipedia
 	private static int[] bubbleSort(int[] arr){
 		boolean swapped = true;
 		int j = 0;
@@ -14,6 +14,7 @@ public class BasicSorting {
 			swapped = false;	//to exit after all swapped
 			j++;
 			
+			//the biggest element will be put at last, the second biggest at 2nd last and so on...
 			for(int i = 0; i < arr.length - j; i++){
 				if(arr[i] > arr[i+1]) {		//if left no is greater than right, swap it
 					int temp = arr[i];
@@ -23,8 +24,8 @@ public class BasicSorting {
 					swapped = true;		//set to true, inorder to proceed checking
 				}
 			}
-			System.out.println();
-			display(arr);
+			//System.out.println();
+			//display(arr);
 		}
 		
 		return arr;
@@ -37,6 +38,7 @@ public class BasicSorting {
 			//init min to start. We start from left and keep the smallest no at left and proceed
 			int min = j; 	
 			
+			//go searching min and update old min if found less than it. Then its swapped below
 			for(int i = j+1 ; i < arr.length; i++) {
 				if(arr[i] < arr[min]){
 					min = i; 		//update min index to store new min index
@@ -44,11 +46,15 @@ public class BasicSorting {
 			}
 			
 			//Swap min and out
-			if(min != j){
+			if(min != j) {
 				int temp = arr[j];
 				arr[j] = arr[min];
 				arr[min] = temp;
 			}
+			//The smallest element will be put first, then 2nd smallest second and so on...(opposite of bubble sort)
+			
+			//System.out.println();
+			//display(arr);
 		}
 		
 		return arr;
@@ -62,12 +68,15 @@ public class BasicSorting {
 			int key = arr[j];	 			// the item to be inserted
 			int i = j - 1;
 			
-			while((i >= 0) && (arr[i] > key)){	// Smaller values are moving up
+			while((i >= 0) && (arr[i] > key)){	// Smaller values are moving up (to left)
 				arr[i+1] = arr[i];
 				i--;
 			}
 			
 			arr[i + 1] = key;	 // Put the key in its proper location
+			
+			System.out.println();
+			display(arr);
 		}			
 		return arr;
 	}
