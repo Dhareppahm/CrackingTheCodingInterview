@@ -15,7 +15,7 @@ class Vertex {
 }
 
 class Graph{
-	private static final int MAX_VERTICES = 20;	//maximum no.of vertices  - required to initialize adj matrix
+	//private static final int MAX_VERTICES = 20;	//default maximum no.of vertices  - required to initialize adj matrix
 	private Vertex[] vertices; 		//List of all vertices
 	private int[][] adjMatrix;		//adjacency matrix to denote 1 if there is edge, else 0
 	private int currentVertices;	//current no. of vertices
@@ -25,16 +25,16 @@ class Graph{
 	LinkedList<Integer> queue;			//BFS : acts as queue and will hold index in vertex in vertices
 	
 	//constructor
-	public Graph(){
-		vertices = new Vertex[MAX_VERTICES];
-		adjMatrix = new int[MAX_VERTICES][MAX_VERTICES];
+	public Graph(int no_of_vertices) {
+		vertices = new Vertex[no_of_vertices];
+		adjMatrix = new int[no_of_vertices][no_of_vertices];
 		currentVertices = 0;
 		stack = new Stack<Integer>();
 		queue = new LinkedList<Integer>();
 		
 		//initialize the adjMatrix with 0
-		for(int i=0; i < MAX_VERTICES; i++){
-			for(int j=0; j < MAX_VERTICES; j++){
+		for(int i=0; i < no_of_vertices; i++) {
+			for(int j=0; j < no_of_vertices; j++) {
 				adjMatrix[i][j] = 0;
 			}
 		}
@@ -55,6 +55,15 @@ class Graph{
 		System.out.print(vertices[index].label);
 	}
 	
+	//just to see how graph looks are vertices and edges added
+	public void printAdjMatrix(){
+		for(int i=0; i < adjMatrix.length; i++){
+			for(int j=0; j < adjMatrix.length; j++){
+				System.out.print(adjMatrix[i][j]+ " ");
+			}
+			System.out.println();
+		}
+	}
 	
 	public int getAdjUnvisitedVertex(int v){
 		for(int i=0; i < currentVertices; i++){
@@ -139,12 +148,11 @@ class Graph{
 
 
 
-
-
 public class GraphApp {
 	
 	public static void main(String[] args) {
-		Graph graph = new Graph();
+		int no_of_vertices = 5;
+		Graph graph = new Graph(no_of_vertices);
 		
 		graph.addVertex("A");	//0
 		graph.addVertex("B");	//1
@@ -156,6 +164,9 @@ public class GraphApp {
 		graph.addEdge(1, 2);	//B - C
 		graph.addEdge(0, 3);	//A - D
 		graph.addEdge(3, 4);	//D - E
+		
+		System.out.println("Print adjacency matrix : ");
+		graph.printAdjMatrix();
 		
 		System.out.print("DSF : ");
 		graph.DFS();
