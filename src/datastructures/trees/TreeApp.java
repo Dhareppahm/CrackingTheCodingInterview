@@ -122,7 +122,7 @@ class Tree{
 	}
 
 	/**
-	 * BFS for Tree : Key thing is BFS is interative and uses a QUEUE. (In case of Graphs, we Mark nodes visited as True as Graph can have cycles)
+	 * BFS for Tree : Key thing is BFS is iterative and uses a QUEUE. (In case of Graphs, we Mark nodes visited as True as Graph can have cycles)
 	 */
 	public void BFS() {
 		//This operates as a Queue
