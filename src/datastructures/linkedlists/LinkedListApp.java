@@ -3,11 +3,11 @@ package datastructures.linkedlists;
 import java.util.HashSet;
 import java.util.Set;
 
-class Link {
+class ListNode {
 	int data;
-	Link next;
+	ListNode next;
 
-	public Link(int data){
+	public ListNode(int data){
 		this.data = data;
 	}
 
@@ -16,10 +16,10 @@ class Link {
 	}
 }
 
-class LinkList{
-	Link first;		//The reference to first node in linkedlist is required, as we start traverse etc. from first node/link
+class LinkedList{
+	ListNode first;		//The reference to first node in linkedlist is required, as we start traverse etc. from first node/link
 
-	public LinkList(){
+	public LinkedList(){
 		first = null;	//Initally LinkedList is empty, so first = null
 	}
 
@@ -31,14 +31,14 @@ class LinkList{
 	}
 
 	public void insertFirst(int data){
-		Link newLink = new Link(data);
+		ListNode newLink = new ListNode(data);
 
 		newLink.next = first; //newLink -> old first
 		first = newLink;	//first -> newLink		
 	}
 
 	public void displayList(){
-		Link current = first;	//start iterating from first
+		ListNode current = first;	//start iterating from first
 
 		while(current != null){
 			current.display();
@@ -52,8 +52,8 @@ class LinkList{
 	 *****************************************************************************/
 	//Approach 1 : Using a temporary buffer : O(n) but has space complexity
 	public void removeDuplicatesUsingHashSet() {
-		Link current = first;
-		Link previous = first;
+		ListNode current = first;
+		ListNode previous = first;
 		Set<Integer> hashSet = new HashSet<Integer>();
 
 		while(current != null) {
@@ -82,9 +82,9 @@ class LinkList{
 	public void removeDuplicatesWithoutBuffer() {
 		
 		//Initialize the pointers
-		Link current = first;
+		ListNode current = first;
 		while(current != null){			
-			Link runner = current;
+			ListNode runner = current;
 			
 			while(runner.next != null){				
 				if(current.data == runner.next.data){
@@ -110,8 +110,8 @@ class LinkList{
 	//Current should point to Node we require. 
 	
 	public void findKthLastElement(int k){
-		Link current = first;
-		Link runner = first;
+		ListNode current = first;
+		ListNode runner = first;
 		int diff = k;
 		//Move Runner K links ahead
 		while(k >= 0) {
@@ -140,8 +140,8 @@ class LinkList{
 	//Approach : Start from beginning and goto till we find the Link to delete.
 	//Change the previous link pointer to point to current's next pointer
 	public void deleteLink(int deleteData){
-		Link current = first;
-		Link previous = first;
+		ListNode current = first;
+		ListNode previous = first;
 		
 		while(current != null){
 			if(first.data == deleteData){
@@ -166,34 +166,34 @@ class LinkList{
 	public void partitionList(int partitionValue){
 		
 		//Current List head/first pointer
-		Link current = first;
+		ListNode current = first;
 		
 		//New List pointers
-		Link beforeStart = null;		//stores values less than partition
-		Link beforeEnd = null;
+		ListNode beforeStart = null;		//stores values less than partition
+		ListNode beforeEnd = null;
 		
-		Link afterStart = null;			//stores values greater than partition
-		Link afterEnd = null;
+		ListNode afterStart = null;			//stores values greater than partition
+		ListNode afterEnd = null;
 		
 		//iterate through our original list
 		while(current != null) {
-			Link newLink = new Link(current.data);
+			ListNode newNode = new ListNode(current.data);
 			
 			if(current.data < partitionValue) {				//add to  belowList
 				if(beforeStart == null) {
-					beforeStart = newLink;
+					beforeStart = newNode;
 					beforeEnd = beforeStart;
 				}else {
-					beforeEnd.next = newLink;
-					beforeEnd = newLink;
+					beforeEnd.next = newNode;
+					beforeEnd = newNode;
 				}				
 			} else {											//add to aboveList
 				if(afterStart == null){
-					afterStart = newLink;
+					afterStart = newNode;
 					afterEnd = afterStart;
 				}else{
-					afterEnd.next = newLink;
-					afterEnd = newLink;
+					afterEnd.next = newNode;
+					afterEnd = newNode;
 				}				
 			}			
 			current = current.next;
@@ -220,7 +220,7 @@ class LinkList{
 public class LinkedListApp {
 
 	public static void main(String[] args) {
-		LinkList list = new LinkList();
+		LinkedList list = new LinkedList();
 
 		list.insertFirst(20);
 		list.insertFirst(15);

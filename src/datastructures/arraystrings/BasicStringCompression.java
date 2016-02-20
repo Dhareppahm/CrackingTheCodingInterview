@@ -2,11 +2,19 @@ package datastructures.arraystrings;
 
 import java.util.Scanner;
 
+/**
+ * Problem 1.5
+Implement a method to perform basic string compression using the counts of
+repeated characters. For example, the string aabcccccaaa would become
+a2blc5a3. If the "compressed" string would not become smaller than the original
+string, your method should return the original string
+ */
 public class BasicStringCompression {
 
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		
+		System.out.println("Enter Input string: ");
 		String original = s.next();
 		
 		System.out.println("Original string : "+ original);

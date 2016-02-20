@@ -2,7 +2,8 @@ package datastructures.arraystrings;
 
 import java.util.Scanner;
 
-/**
+/** 
+ * Problem 1.1
 Implement an algorithm to determine if a string has all unique characters. What
 if you cannot use additional data structures?
  * 
@@ -12,15 +13,16 @@ public class CheckIfStringContainsUniqueCharacters {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 
+		System.out.println("Enter Input String: ");
 		String inputString = s.nextLine();
 
-		//complexity - O(n*2), n = length of string
-		boolean isUnique_1 = isUniqueChar_1(inputString);
+		//complexity - O(n^2), n = length of string
+		boolean isUnique_1 = isUniqueChar_BruteForce(inputString);
 
 		System.out.println("Is Unique = " + isUnique_1);
 
 		//Better solution : Complexity - O(n), n = length of string
-		boolean isUnique_2 = isUniqueChar_2(inputString);
+		boolean isUnique_2 = isUniqueChar(inputString);
 
 		System.out.println("Is Unique = " + isUnique_2);
 
@@ -31,12 +33,9 @@ public class CheckIfStringContainsUniqueCharacters {
 	/**
 	 * Checks a char with every other character in string. So complexity is O(n*2)
 	 */
-	private static boolean isUniqueChar_1(String inputString) {
-		
+	private static boolean isUniqueChar_BruteForce(String inputString) {		
 		boolean isUnique = true;
-
 		for(int i = 0; i < inputString.length(); i++) {
-
 			for(int j = i + 1; j < inputString.length(); j++) {				
 				if(inputString.charAt(i) == inputString.charAt(j)) {
 					isUnique = false;
@@ -51,8 +50,7 @@ public class CheckIfStringContainsUniqueCharacters {
 	 * Create a boolean array, and store true at index location corresponding to character in string. 
 	 * If character occurs again, the value would be true at the same index, and we will know char is repeated.
 	 */
-	private static boolean isUniqueChar_2(String inputString){
-
+	private static boolean isUniqueChar(String inputString){
 		boolean[] boolArray = new boolean[256];
 
 		for(int i = 0; i < inputString.length(); i++) {

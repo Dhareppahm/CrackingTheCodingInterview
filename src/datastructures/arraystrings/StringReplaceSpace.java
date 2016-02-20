@@ -1,7 +1,10 @@
 package datastructures.arraystrings;
 
 import java.util.Scanner;
-
+/**
+ * Problem 1.4
+ * Write a method to replace all spaces in a string with '%20'.
+ */
 public class StringReplaceSpace {
 
 	public static void main(String[] args) {

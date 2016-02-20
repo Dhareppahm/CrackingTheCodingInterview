@@ -3,6 +3,10 @@ package datastructures.arraystrings;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Problem 1.3
+ * Given two strings, write a method to decide if one is a permutation of the other
+ */
 //Anagram => a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
 public class CheckIfStringsAreAnagrams {
 
@@ -36,7 +40,7 @@ public class CheckIfStringsAreAnagrams {
 	
 	
 	/**
-	 * Method 2 (Smart one) : Since no. of character counts is same in both strings, just the seq is shuffled for anagrams, just
+	 * Method 2 (O(log n)) : Since no. of character counts is same in both strings, just the seq is shuffled for anagrams, just
 	 * sort both character arrays. The compare them. They should be exactly same to be anagrams 
 	 */
 	private static boolean isAnagram_2(String str1, String str2){
@@ -65,7 +69,9 @@ public class CheckIfStringsAreAnagrams {
 		
 		Scanner s = new Scanner(System.in);
 		
+		System.out.println("Enter String 1: ");
 		String str1 = s.nextLine();
+		System.out.println("Enter String 2: ");
 		String str2 = s.nextLine();
 		
 		//System.out.println(str1 + " --- " + str2);
