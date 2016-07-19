@@ -4,13 +4,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Problem 1.3
- * Given two strings, write a method to decide if one is a permutation of the other
+Problem 1.2 : Given two strings, write a method to decide if one is a permutation/anagrams of the other
+
+Anagram => a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
  */
-//Anagram => a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
-public class CheckIfStringsAreAnagrams {
+public class CheckPermutation {
 
 	/**
+     * Approach 1: O(n)
 	 * Check character counts, if each character count is same, then strings are anagrams
 	 */
 	private static boolean isAnagram_1(String str1, String str2){
@@ -25,11 +26,11 @@ public class CheckIfStringsAreAnagrams {
 		
 		//Get letter count for str1
 		for(char c : str1.toCharArray()){
-			letters[c] = letters[c] + 1;	//increment the count. Note: Index is char ascii value, so same char will hold same index
+			letters[c]++;	//increment the count. Note: Index is char ascii value, so same char will hold same index
 		}		
-		//Check counts for str2. Decrement the count. If count goes less than 0, then counts didnt match. so not anagram
+		//Check counts for str2. Decrement the count. If count goes less than 0, then counts didn't match. so not anagram/permutation
 		for(char c : str2.toCharArray()) {
-			letters[c] = letters[c] - 1;
+			letters[c]--;
 			if (letters[c] < 0){
 				return false;
 			}
@@ -40,8 +41,8 @@ public class CheckIfStringsAreAnagrams {
 	
 	
 	/**
-	 * Method 2 (O(log n)) : Since no. of character counts is same in both strings, just the seq is shuffled for anagrams, just
-	 * sort both character arrays. The compare them. They should be exactly same to be anagrams 
+	 * Method 2 (O(n log n)) : Since no. of character counts is same in both strings, just the seq is shuffled for anagrams, just
+	 * sort both character arrays. Then compare them. They should be exactly same to be anagrams
 	 */
 	private static boolean isAnagram_2(String str1, String str2){
 		
@@ -66,16 +67,13 @@ public class CheckIfStringsAreAnagrams {
 	}
 	
 	public static void main(String[] args) {
-		
 		Scanner s = new Scanner(System.in);
 		
 		System.out.println("Enter String 1: ");
 		String str1 = s.nextLine();
 		System.out.println("Enter String 2: ");
 		String str2 = s.nextLine();
-		
-		//System.out.println(str1 + " --- " + str2);
-		
+
 		boolean isAnagram1 = isAnagram_1(str1, str2);
 		System.out.println("Is Anagram 1 : "+ isAnagram1);
 		
