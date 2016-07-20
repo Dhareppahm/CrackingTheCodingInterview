@@ -3,28 +3,19 @@ package datastructures.arraystrings;
 import java.util.Scanner;
 
 /**
- * Problem 1.5
-Implement a method to perform basic string compression using the counts of
-repeated characters. For example, the string aabcccccaaa would become
-a2blc5a3. If the "compressed" string would not become smaller than the original
-string, your method should return the original string
+ Problem 1.6
+ Implement a method to perform basic string compression using the counts of repeated characters.
+ For example, the string aabcccccaaa would become a2blc5a3.
+ If the "compressed" string would not become smaller than the original string, your method should return the original string.
  */
-public class BasicStringCompression {
+public class StringCompression {
 
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		
-		System.out.println("Enter Input string: ");
-		String original = s.next();
-		
-		System.out.println("Original string : "+ original);
-		
-		String compressedString = getCompressedString(original);
-		
-		System.out.println("Final Output : "+compressedString);
-		
-		s.close();
+		String original = "aabcccccaaa";
+        System.out.println("Original string : "+ original);
 
+        String compressedString = getCompressedString(original);
+		System.out.println("Final Output : "+compressedString);
 	}
 	
 	/**
@@ -42,8 +33,8 @@ public class BasicStringCompression {
 		for(int i = 0; i <= original.length() - 1; i++) {
 			
 			char currentChar = original.charAt(i);
-			
 			char nextChar;
+
 			if(i != original.length() - 1){
 				nextChar = original.charAt(i + 1);
 			} else {
@@ -53,12 +44,12 @@ public class BasicStringCompression {
 			if(currentChar == nextChar){
 				count++;
 			} else {
-				sb.append(""+currentChar + count);
+				sb.append("" + currentChar + count);
 				count = 1;	//reset count
 			}
 		}
 		
-		System.out.println("Compressed : "+ sb.toString());
+		System.out.println("Compressed   : "+ sb.toString());
 		
 		//If the "compressed" string would not become smaller than the original string, your method should return the original string.
 		if(original.length() < sb.toString().length()){

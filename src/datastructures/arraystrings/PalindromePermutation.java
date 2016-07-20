@@ -10,7 +10,7 @@ public class PalindromePermutation {
 
         String s = "aabbcc   cd";
         boolean flag = obj.isPermutationPalindrome(s);
-        System.out.println("String = "+ s+ "\nIs Permutation Plaindrome : "+flag);
+        System.out.println("String = "+ s+ "\nIs Permutation Palindrome : "+flag);
     }
 
     /**
