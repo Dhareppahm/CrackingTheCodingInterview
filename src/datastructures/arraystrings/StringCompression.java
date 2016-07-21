@@ -20,31 +20,22 @@ public class StringCompression {
 	
 	/**
 	 * Loop through each character in String from start, compare char at current index to char at next index
-	 * if both chars are same, increment the count.
+	 * if both chars are same, increment the count and proceed further
 	 * else
-	 * append the original char and count in string
+	 * append the original char and count in string and then proceed further
 	 * 
 	 * Complexity : O(n) , n = length of string
 	 */
-	private static String getCompressedString(String original){
+	private static String getCompressedString(String s){
 		int count = 1;
 		StringBuilder sb = new StringBuilder();
 		
-		for(int i = 0; i <= original.length() - 1; i++) {
-			
-			char currentChar = original.charAt(i);
-			char nextChar;
+		for(int i = 0; i < s.length(); i++) {
 
-			if(i != original.length() - 1){
-				nextChar = original.charAt(i + 1);
-			} else {
-				nextChar = '\n';	//any separator which will not be in string to break loop and print final count
-			}
-			
-			if(currentChar == nextChar){
+			if(i+1 < s.length() && s.charAt(i) == s.charAt(i+1)){
 				count++;
 			} else {
-				sb.append("" + currentChar + count);
+				sb.append(Character.toString(s.charAt(i)) + count);
 				count = 1;	//reset count
 			}
 		}
@@ -52,8 +43,8 @@ public class StringCompression {
 		System.out.println("Compressed   : "+ sb.toString());
 		
 		//If the "compressed" string would not become smaller than the original string, your method should return the original string.
-		if(original.length() < sb.toString().length()){
-			return original;
+		if(s.length() < sb.length()){
+			return s;
 		}else{
 			return sb.toString();
 		}

@@ -2,7 +2,7 @@ package datastructures.arraystrings;
 
 import java.util.Scanner;
 /**
- * Problem 1.6
+ * Problem 1.7
 Given an image represented by an NxN matrix, where each pixel in the image is 4
 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
  *
@@ -108,18 +108,25 @@ Rotate by -180:
 	Method 3: Reverse by +180 as they are same
 	
 	 */
-	private static int[][] rotateMatrixby_plus90(int[][] matrix, int n){		
+	private static int[][] rotateMatrixby_plus90(int[][] matrix, int n){
+		/** Here i and j are taken differently. Outer loop represents the layers, and we only need to go till half layers
+	  	 ---> i
+	  j	 1	2	3	4
+	  |	 5	6	7	8
+	  v	 9	10	11	12
+	  	 13	14	15	16
+		 */
 		//Layers
-		for(int i=0; i < n/2; i++){			
+		for(int i=0; i < n/2; i++){
 			//Elements
 			for(int j=i; j < n - i - 1; j++){
 				
 				//Inorder to understand this, draw a [3][3] matrix and write the rotation. As per that write code below as you first did.
 				int temp = matrix[i][j];				
-				matrix[i][j] = matrix[n-j-1][i];		
+				matrix[i][j] = matrix[n-j-1][i];
 				matrix[n-j-1][i] = matrix[n-i-1][n-j-1];
 				matrix[n-i-1][n-j-1] = matrix[j][n-i-1];
-				matrix[j][n-i-1] = temp; 				
+				matrix[j][n-i-1] = temp;
 			}			
 		}		
 		return matrix;
