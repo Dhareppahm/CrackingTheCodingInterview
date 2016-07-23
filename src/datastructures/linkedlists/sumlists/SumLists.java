@@ -55,15 +55,15 @@ class LinkedList{
 
     //Reverse Lists utility used in Forward order
     public void reverse(){
-        Node current = head;
+        Node curr = head;
         Node prev = null;
         Node next = null;
 
-        while(current != null){
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
         head = prev;
     }
