@@ -1,7 +1,7 @@
 package datastructures.linkedlists.LoopDetection;
 
 /**
- * Created by sandeep on 7/23/2016.
+ Problem 2.8: Loop detection: Given a circular linked list (corrupt) implement an alogrithm that returns node at beginning of loop
  */
 class Node{
     int data;
