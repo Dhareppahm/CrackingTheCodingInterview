@@ -1,4 +1,4 @@
-package datastructures.graphs;
+package datastructures.treesgraphs.treebasics;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -22,7 +22,7 @@ class Graph{
 	
 	//Stack for DFS implementation : Using Java Stack
 	Stack<Integer> stack;			//DFS : stack will hold index of vertex in vertices array
-	LinkedList<Integer> queue;			//BFS : acts as queue and will hold index in vertex in vertices
+	LinkedList<Integer> queue;			//BFS_LevelLists : acts as queue and will hold index in vertex in vertices
 	
 	//constructor
 	public Graph(int no_of_vertices) {
@@ -75,12 +75,12 @@ class Graph{
 		return -1;
 	}
 	
-	 //Searching Methods : DFS and BFS
+	 //Searching Methods : DFS and BFS_LevelLists
 	/**
 	 * DFS Rules 
 	 * RULE 1 : Visit an adjacent unvisited vertex, mark it, and push it on the stack.
-	 * RULE 2 : If you can’t follow Rule 1, then, pop a vertex off the stack.
-	 * RULE 3 : If you can’t follow Rule 1 or Rule 2, you’re done.
+	 * RULE 2 : If you canï¿½t follow Rule 1, then, pop a vertex off the stack.
+	 * RULE 3 : If you canï¿½t follow Rule 1 or Rule 2, youï¿½re done.
 	 */
 	public void DFS(){
 		
@@ -113,10 +113,10 @@ class Graph{
 	
 	
 	/**
-	 * BFS Rules
-	 * RULE 1 : Visit the next unvisited vertex that’s adjacent to the current vertex, mark it and insert it into the queue.
-	 * RULE 2 : If you can’t carry out Rule 1 because there are no more unvisited vertices, remove a vertex from the queue and make it the current vertex.
-	 * RULE 3 : If you can’t carry out Rule 2 because the queue is empty, you’re done.
+	 * BFS_LevelLists Rules
+	 * RULE 1 : Visit the next unvisited vertex thatï¿½s adjacent to the current vertex, mark it and insert it into the queue.
+	 * RULE 2 : If you canï¿½t carry out Rule 1 because there are no more unvisited vertices, remove a vertex from the queue and make it the current vertex.
+	 * RULE 3 : If you canï¿½t carry out Rule 2 because the queue is empty, youï¿½re done.
 	 */
 	public void BFS(){
 		//start at vertex 0				RULE 1
@@ -173,7 +173,7 @@ public class GraphApp {
 		
 		System.out.println();
 		
-		System.out.print("BFS : ");
+		System.out.print("BFS_LevelLists : ");
 		graph.BFS();
 
 

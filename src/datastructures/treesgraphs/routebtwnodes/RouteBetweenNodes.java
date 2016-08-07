@@ -9,8 +9,8 @@ import java.util.List;
          Given a directed graph, design an algorithm to find out if there is a route between nodes
  -----------------------------------------------------------------------------------------------------------------------
  Approach:
-    1. Regular BFS search through graph
-    2. For BFS use a Queue. Mark start visited and add to queue
+    1. Regular BFS_LevelLists search through graph
+    2. For BFS_LevelLists use a Queue. Mark start visited and add to queue
     3. While Queue is not empty
         Pop from queue, and loop through adjacent nodes
         If end found: return true
