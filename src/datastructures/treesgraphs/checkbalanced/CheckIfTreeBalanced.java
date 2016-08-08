@@ -4,6 +4,8 @@ package datastructures.treesgraphs.checkbalanced;
  Problem 4: Check if tree Balanced
  Implement a function to check if tree is balanced.
  Balanced tree - is defined to be a tree such that heights of two subtrees never differ by more than 1
+
+ See also: leetcode.easy.tree.balanced
  */
 
 class Node{
@@ -47,7 +49,10 @@ class Tree {
         }
 
         int leftHeight = helper(root.left);
+        if(leftHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE;       //if error return error right away
+
         int rightHeight = helper(root.right);
+        if(rightHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE;       //if error return error right away
 
         if(Math.abs(leftHeight - rightHeight) > 1){
             return Integer.MIN_VALUE;                   //return error MIN_VALUE
@@ -79,11 +84,11 @@ public class CheckIfTreeBalanced {
          */
         tree.root = new Node(1);
         tree.root.left = new Node(2);
-        tree.root.right = new Node(3);
+//        tree.root.right = new Node(3);
         tree.root.left.left = new Node(4);
         tree.root.left.right = new Node(5);
-        tree.root.right.left = new Node(6);
-        tree.root.right.right = new Node(7);
+//        tree.root.right.left = new Node(6);
+//        tree.root.right.right = new Node(7);
 
         return tree;
     }
