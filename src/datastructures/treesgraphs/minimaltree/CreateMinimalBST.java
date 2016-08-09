@@ -59,7 +59,7 @@ class Tree {
 }
 
 
-public class CreateMinimalTree {
+public class CreateMinimalBST {
     public static void main(String[] args) {
         Tree bst = new Tree();
         int[] sortedArray = {1,2,3,4,5,6,7,8,9};
