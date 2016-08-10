@@ -8,7 +8,7 @@ package datastructures.treesgraphs.successor;
  -----------------------------------------------------------------------------------------------------------------------
  Approach:
   if(n has right subtree){
-    return leftmost child of right subtree
+    return leftmost child of n
  }else{
 
     while(n is right child of n.parent){
@@ -37,7 +37,7 @@ class Tree{
         if(n == null)
             return null;
 
-        //n has right subtree, return leftmost child of right subtree
+        //n has right subtree, return leftmost child
         if(n.right != null){
             return getLeftMostNode(n);
         }else{
