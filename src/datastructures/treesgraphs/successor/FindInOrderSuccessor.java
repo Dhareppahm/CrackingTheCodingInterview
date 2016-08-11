@@ -18,6 +18,7 @@ package datastructures.treesgraphs.successor;
  }
  */
 
+
 //need to have link to parent node too trace back
 class Node{
     int data;
@@ -61,8 +62,6 @@ class Tree{
         }
         return n;
     }
-
-
 }
 
 
