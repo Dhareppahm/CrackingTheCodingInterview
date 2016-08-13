@@ -1,4 +1,4 @@
-package datastructures.treesgraphs.buildorder;
+package datastructures.treesgraphs.buildorder.topologicalsort;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -151,7 +151,7 @@ public class BuildOrder {
     public static void main(String[] args) {
         BuildOrder obj = new BuildOrder();
 
-        String[] projects = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
+        /*String[] projects = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
         String[][] dependencies = {
                 {"a", "b"},
                 {"b", "c"},
@@ -164,7 +164,14 @@ public class BuildOrder {
                 {"h", "i"},
                 {"h", "j"},
                 {"i", "j"},
-                {"g", "j"}};
+                {"g", "j"}};*/
+        String[] projects = {"a", "b", "c", "d", "e", "f"};
+        String[][] dependencies = {
+                {"a", "d"},
+                {"f", "b"},
+                {"b", "d"},
+                {"f", "a"},
+                {"d", "c"}};
 
         Graph graph = obj.buildGraph(projects, dependencies);
         Project[] buildOrder = obj.findBuildOrderOfProjects(graph);
@@ -172,12 +179,11 @@ public class BuildOrder {
         if(buildOrder == null){
             System.out.println("Error: Circular dependency found in project. Cannot be built.");
         }else{
-            System.out.println("Build order is: ");
+            System.out.println("Build order by TOPOLOGICAL SORT is: ");
             for(Project p : buildOrder){
                 System.out.print(p.getName()+ " ");
             }
         }
-
     }
 
 }
