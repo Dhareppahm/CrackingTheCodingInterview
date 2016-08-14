@@ -73,16 +73,16 @@ class Tree{
 
         //Recurse to left and right subtrees
         Node leftLCA = findLCA(node.left, p, q);
-        if(leftLCA != null && leftLCA.data != p && leftLCA.data != q){            //return lca right away
+        if(leftLCA != null && leftLCA.data != p && leftLCA.data != q){            //optional: return lca right away
             return leftLCA;
         }
 
         Node rightLCA = findLCA(node.right, p, q);
-        if(rightLCA != null && rightLCA.data != p && rightLCA.data != q){            //return lca right away
+        if(rightLCA != null && rightLCA.data != p && rightLCA.data != q){            //optional: return lca right away
             return rightLCA;
         }
 
-        //one node is present in once subtree and other is present in other. So this node is the LCA
+        //one node is present in once subtree and other is present in other. So LCA is their parent
         if(leftLCA != null && rightLCA != null){
             return node;
         }
