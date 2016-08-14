@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- Problem 8: First Common Ancestor
+ Problem 8: First Common Ancestor (Lowest Common Ancestor)
  Design an algorithm and write code to find the "First Common Ancestor" of two nodes in Binary tree.
 
  Avoid storing additional nodes in a data structure.
