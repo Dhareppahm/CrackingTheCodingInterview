@@ -2,6 +2,10 @@ package concepts_algorithms.bitmanipulation;
 
 /**
  Problem 5.1: Insertion
+
+ N = 10000000000  M = 10011 i=2, j=6
+ Output = 10001001100
+
  */
 public class InsertMintoN {
 
@@ -35,15 +39,23 @@ public class InsertMintoN {
     public static void main(String[] args) {
         InsertMintoN obj = new InsertMintoN();
 
-        int M = 9;
-        int N = 2;
+        //Check same test input and output
+        int n = Integer.parseInt("10000000000",2);
+        int m = Integer.parseInt("10011",2);
+        int res = Integer.parseInt("10001001100",2);
+        System.out.println("n="+n+" m="+m+" res="+res);
+        System.out.println("-------------------------------");
 
-        int i=1, j = 2;
+        int N = 1024;
+        int M = 19;
+
+        int i=2, j = 6;
 
         System.out.println("M = "+ Integer.toBinaryString(M));
         System.out.println("N = "+ Integer.toBinaryString(N));
 
         int result = obj.insertMintoN(M, N, i, j);
+        System.out.println("result = "+ Integer.toBinaryString(result));
         System.out.println(result);
 
     }
