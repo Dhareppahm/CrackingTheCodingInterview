@@ -3,6 +3,8 @@ package datastructures.arraystrings;
 /**
  1.4 Palindrome Permutation:
  Given a string, write a function to check if it is permutation of a palindrome.
+
+ IMP LOGIC: To be a permutation of a palindrome, a string can have no more than 1 character that occurs odd times.
  */
 public class PalindromePermutation {
     public static void main(String[] args) {
