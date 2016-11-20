@@ -1,7 +1,5 @@
 package datastructures.arraystrings;
 
-import java.util.Scanner;
-
 /**
  Problem 1.6
  Implement a method to perform basic string compression using the counts of repeated characters.
