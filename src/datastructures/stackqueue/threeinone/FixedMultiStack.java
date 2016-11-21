@@ -64,7 +64,7 @@ public class FixedMultiStack {
     }
 
     private int getIndexOfTop(int stackNum){
-        int offset = stackNum * stackCapacity;      //goto ocrresponding offset
+        int offset = stackNum * stackCapacity;      //goto corresponding offset
         int topCount = topCounter[stackNum];                   //get incremented top count
         int index = offset + topCount - 1;
 

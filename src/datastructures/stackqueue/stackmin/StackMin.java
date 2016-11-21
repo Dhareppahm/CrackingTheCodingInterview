@@ -12,7 +12,7 @@ public class StackMin extends Stack<Integer> {
 
     public void push(int data){
         if(data < min()){
-            minStack.push(data);                    //if less than current min, also push to misStack
+            minStack.push(data);                    //if less than current min, also push to minStack
         }
         super.push(data);                           //super class is Stack
     }

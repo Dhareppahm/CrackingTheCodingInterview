@@ -32,20 +32,22 @@ public class MyQueue<T> {
     }
 
     public T dequeue(){
-        shiftStacks();
+        if(stackOldest.isEmpty()) {     //move everything to oldStack from newStack only if its empty
+            shiftStacks();
+        }
         return stackOldest.pop();
     }
 
     public T peek(){
-        shiftStacks();
+        if(stackOldest.isEmpty()) {     //move everything to oldStack from newStack only if its empty
+            shiftStacks();
+        }
         return stackOldest.peek();
     }
 
     private void shiftStacks(){
-        if(stackOldest.isEmpty()){
-            while(!stackNewest.isEmpty()){
-                stackOldest.push(stackNewest.pop());
-            }
+        while(!stackNewest.isEmpty()){
+            stackOldest.push(stackNewest.pop());
         }
     }
 
@@ -71,6 +73,9 @@ public class MyQueue<T> {
         System.out.println("Queue size = "+queue.size());
 
         System.out.println("Dequeue: "+ queue.dequeue());
+        System.out.println("Dequeue: "+ queue.dequeue());
+        System.out.println("Peek: "+ queue.peek());
+        System.out.println("Queue size = "+queue.size());
         System.out.println("Dequeue: "+ queue.dequeue());
         System.out.println("Peek: "+ queue.peek());
         System.out.println("Queue size = "+queue.size());

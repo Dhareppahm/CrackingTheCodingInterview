@@ -57,10 +57,10 @@ public class StackOfPlates {
     private int leftShift(int index, boolean removeTop){
         Stack<Integer> stack = stacksList.get(index);
 
-        int removedItem;
-//        if(removeTop){
-            removedItem = stack.pop();          //here we always remove top from that stack
-//        }
+        int removedItem = 0;
+        if(removeTop){
+            removedItem = stack.pop();          //here we remove top of that index stack
+        }
 
         if(stack.isEmpty()){
             stacksList.remove(stack);
@@ -85,6 +85,14 @@ public class StackOfPlates {
         return stacksList.get(stacksList.size() - 1);
     }
 
+    //print stack of plates
+    private static void printStackOfPlates(StackOfPlates stackOfPlates){
+        for(int i=0; i < stackOfPlates.stacksList.size(); i++){
+            Stack<Integer> stack = stackOfPlates.stacksList.get(i);
+            System.out.println(Arrays.toString(stack.toArray()));
+        }
+    }
+
     public static void main(String[] args) {
         StackOfPlates stackOfPlates = new StackOfPlates(5);     //say 5 items at max in stack
 
@@ -93,26 +101,24 @@ public class StackOfPlates {
         stackOfPlates.push(11);stackOfPlates.push(12);
 
         //current stacks status
-        System.out.println("Stack Status: ");
-        for(int i=0; i < stackOfPlates.stacksList.size(); i++){
-            Stack<Integer> stack = stackOfPlates.stacksList.get(i);
-            System.out.println(Arrays.toString(stack.toArray()));
-        }
+        System.out.println("Stack initial Status: ");
+        printStackOfPlates(stackOfPlates);
 
         stackOfPlates.pop();stackOfPlates.pop();stackOfPlates.pop();
 
-        System.out.println("Stack Status: ");
-        for(int i=0; i < stackOfPlates.stacksList.size(); i++){
-            Stack<Integer> stack = stackOfPlates.stacksList.get(i);
-            System.out.println(Arrays.toString(stack.toArray()));
-        }
+        System.out.println("Stack Status after 3 pop(): ");
+        printStackOfPlates(stackOfPlates);
+
 
         stackOfPlates.popAt(0);                 //replace top at index 0 stack = 5 with top of index 1 stack = 9
-        System.out.println("Stack Status: ");
-        for(int i=0; i < stackOfPlates.stacksList.size(); i++){
-            Stack<Integer> stack = stackOfPlates.stacksList.get(i);
-            System.out.println(Arrays.toString(stack.toArray()));
-        }
+        System.out.println("Stack Status after popAt(0): ");
+        printStackOfPlates(stackOfPlates);
+
+        stackOfPlates.pop();
+        System.out.println("Stack Status after 1 pop(): ");
+        printStackOfPlates(stackOfPlates);
+
+
 
     }
 

@@ -51,7 +51,7 @@ class LinkedList {
 
 public class DeleteMiddleNode {
     public static void main(String[] args) {
-       LinkedList list = new LinkedList();
+        LinkedList list = new LinkedList();
         list.head = new Node(1);
         list.head.next = new Node(2);
         Node deleteNode = new Node(3);
