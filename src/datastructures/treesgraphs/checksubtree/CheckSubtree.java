@@ -66,11 +66,11 @@ class Tree{
     private boolean helper(Node n1, Node n2) {
         if(n1 == null){         //main tree empty, so no match
             return false;
-        }else if(n1.data == n2.data){
+        }else if(n1.data == n2.data){       //once we get match, check together
             return matchTree(n1,n2);
         }
 
-        return helper(n1.left, n2) || helper(n1.right, n2);     //check with T1 left and right subtree
+        return helper(n1.left, n2) || helper(n1.right, n2);     //check with T1 left subtree and T1 right subtree
     }
 
     private boolean matchTree(Node n1, Node n2) {
@@ -102,7 +102,7 @@ public class CheckSubtree {
         t1.root.left = new Node(4);
 
         t2.root = new Node(3);
-        t2.root.left = new Node(4);
+        t2.root.right = new Node(4);
 
         boolean isSubtree = t1.checkSubtree(t1.root, t2.root);
         System.out.println("By Preorder string check: "+isSubtree);

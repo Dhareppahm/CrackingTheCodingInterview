@@ -40,7 +40,7 @@ class Tree{
 
         //n has right subtree, return leftmost child
         if(n.right != null){
-            return getLeftMostNode(n);
+            return getLeftMostNode(n.right);
         }else{
             //n is right child of n.parent, go up
             Node q = n;

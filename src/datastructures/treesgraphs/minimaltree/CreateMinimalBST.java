@@ -45,15 +45,15 @@ class Tree {
         }
 
         int mid = (start + end)/2;
-        Node newNode = new Node(arr[mid]);
+        Node n = new Node(arr[mid]);
 
         if(root == null){       //if root not yet created, create root with arr[mid]
-            root = newNode;
+            root = n;
         }
 
-        newNode.left = createMinimalBST(arr, start, mid - 1);
-        newNode.right = createMinimalBST(arr, mid + 1, end);
-        return newNode;
+        n.left = createMinimalBST(arr, start, mid - 1);
+        n.right = createMinimalBST(arr, mid + 1, end);
+        return n;
     }
 
 }

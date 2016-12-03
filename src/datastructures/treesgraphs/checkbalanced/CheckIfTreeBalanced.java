@@ -57,7 +57,7 @@ class Tree {
         if(Math.abs(leftHeight - rightHeight) > 1){
             return Integer.MIN_VALUE;                   //return error MIN_VALUE
         } else {
-            return Math.max(leftHeight, rightHeight) + 1;   //return height which is max of left and right subtree
+            return Math.max(leftHeight, rightHeight) + 1;   //return height which is max of (left OR right subtree) + 1
         }
     }
 
@@ -87,8 +87,8 @@ public class CheckIfTreeBalanced {
 //        tree.root.right = new Node(3);
         tree.root.left.left = new Node(4);
         tree.root.left.right = new Node(5);
-//        tree.root.right.left = new Node(6);
-//        tree.root.right.right = new Node(7);
+  //      tree.root.right.left = new Node(6);
+   //     tree.root.right.right = new Node(7);
 
         return tree;
     }

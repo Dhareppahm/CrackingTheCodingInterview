@@ -51,9 +51,6 @@ class Tree{
             List<Node> parents = current;    //assign current level to parent and go to next level
             current = new LinkedList<>();   //next level start empty
 
-//            Node n = queue.remove();
-//            System.out.print(n.data + " ");
-
             for(Node n : parents){
                 if(n.left != null) {
                     current.add(n.left);

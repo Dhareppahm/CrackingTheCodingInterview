@@ -50,16 +50,16 @@ class Tree{
 					if(current == null){			//go till the leaf node on left
 						parent.left = newNode;		//then add the newNode
 						return;
-					}					
-				} else if(data > current.data) {		//Right child	
+					}
+				} else if(data > current.data) {		//Right child
 					current = current.right;		//go till the leaf node on right
 					if(current == null){
 						parent.right = newNode;		//add the newNode
 						return;
-					}							
+					}
 				}
 
-			}//end while			
+			}//end while
 
 		}
 	}

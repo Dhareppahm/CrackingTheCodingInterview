@@ -20,7 +20,7 @@ import java.util.List;
 
 class Node{
     String data;
-    List<Node> adjacent;        //Hold adjacent nodes to a node
+    List<Node> adjacent;        //Hold adjacent nodes to a node (Using Adjacency List)
     boolean visited;
 
     public Node(String data){

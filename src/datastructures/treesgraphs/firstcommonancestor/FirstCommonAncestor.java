@@ -133,7 +133,7 @@ class Tree{
         Node lca = null;
         for(int i=0; i < pathToNode1.size() && i < pathToNode2.size(); i++){
             if(pathToNode1.get(i).data != pathToNode2.get(i).data){         //mismatch
-                lca = pathToNode1.get(i-1);
+                lca = pathToNode1.get(i-1);                                 //then get its previous, which was matching
                 break;
             }
         }
@@ -141,6 +141,7 @@ class Tree{
         return lca;
     }
 
+    //IMP: Logic the get path...nice recursive logic. Very useful!
     private boolean findPath(Node node, LinkedList<Node> path, int val){
         if(node == null){       //base condition
             return false;

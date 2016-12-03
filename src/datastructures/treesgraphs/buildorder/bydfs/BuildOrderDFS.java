@@ -16,7 +16,9 @@ import java.util.Stack;
  Output: f,e,a,b,d,c
  --------------------------------------------------------------------------------------------------------------------
  Approach 2: Using DFS
- 1.
+ 1. Do DFS and add the node in front and create build order. IMP: Maintain STATE to handle cycle problem
+ 2. Start from BLANK state Project. Set it to PARTIAL and continue DFS and push node into result stack. Then set STATE to Complete
+ 3. Since this DFS is recursive, as we return from call stack, the parent nodes get added in result stack
 
  */
 class Project {      //like Node, same from topological sort but with STATE added to detect cycle in DFS
@@ -41,15 +43,15 @@ class Project {      //like Node, same from topological sort but with STATE adde
     }
 
     public void incrementDependencies(){ dependencies++; }
-    public void decrementDependencies(){ dependencies--; }
+    //public void decrementDependencies(){ dependencies--; }
 
     //Getters
     public ArrayList<Project> getChildren() {
         return children;
     }
-    public int getDependencies() {
+    /*public int getDependencies() {
         return dependencies;
-    }
+    }*/
     public String getName() {
         return name;
     }
@@ -116,19 +118,19 @@ public class BuildOrderDFS {
     public Stack<Project> findBuildOrderOfProjects(Graph graph) {
         ArrayList<Project> projects = graph.getProjects();
 
-        Stack<Project> stack = new Stack<>();
+        Stack<Project> resultStack = new Stack<>();
         for(Project project : projects){
             if(project.getState().equals(Project.State.BLANK)){     //check if BLANK
-                if(!dfsHelper(project, stack)){     //if error occurred, return null
+                if(!dfsHelper(project, resultStack)){     //if error occurred, return null
                     return null;
                 }
             }
         }
 
-        return stack;               //stack with build order
+        return resultStack;               //stack with build order
     }
 
-    private boolean dfsHelper(Project project, Stack<Project> stack) {
+    private boolean dfsHelper(Project project, Stack<Project> resultStack) {        //DFS using Recursion
         if(project.getState().equals(Project.State.PARTIAL)){       //Cycle
             return false;
         }
@@ -136,13 +138,13 @@ public class BuildOrderDFS {
         if(project.getState().equals(Project.State.BLANK)){
             project.setState(Project.State.PARTIAL);
             for(Project children : project.getChildren()){
-                if(!dfsHelper(children, stack)){     //if error occurred, return null
+                if(!dfsHelper(children, resultStack)){     //if error occurred, return false
                     return false;
                 }
             }
 
             project.setState(Project.State.COMPLETE);   //set Complete and Push to stack
-            stack.push(project);        //push to top  NOTE: don't use add() method as it adds at end
+            resultStack.push(project);        //push to top  NOTE: don't use add() method as it adds at end
         }
         return true;
     }

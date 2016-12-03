@@ -2,6 +2,14 @@ package datastructures.treesgraphs.validatebst;
 
 /**
  Problem 4.5 Validate BST: Implement a function to check if a binary tree is a Binary Search Tree (BST)
+ -----------------------------------------------------------------------------------------------------
+ Approach:
+ 1. Start from root and pass (Node, MIN, MAX) as we recurse below to left and right subtree
+ 2. Check BST condition: left <= root < right
+ 3. For Left subtree: (n.left, MIN, root)
+ 4. For Right subtree: (n.right, root, MAX)
+ 5. Return false if any of these fail
+
  */
 
 class Node{
@@ -56,7 +64,7 @@ class Tree{
             return false;
         }
 
-        return true;
+        return true;    //All good!
     }
 
 
