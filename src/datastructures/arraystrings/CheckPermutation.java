@@ -31,7 +31,7 @@ public class CheckPermutation {
 		//Check counts for str2. Decrement the count. If count goes less than 0, then counts didn't match. so not anagram/permutation
 		for(char c : str2.toCharArray()) {
 			letters[c]--;
-				if (letters[c] < 0){
+			if (letters[c] < 0){
 				return false;
 			}
 		}		

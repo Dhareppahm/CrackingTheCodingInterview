@@ -8,8 +8,8 @@ package datastructures.arraystrings;
 public class OneAway {
     public static void main(String[] args) {
         OneAway oa = new OneAway();
-        String s1 = "pal";
-        String s2 = "pale";
+        String s1 = "pale";
+        String s2 = "pal";
         boolean result = oa.isOneEditAway(s1, s2);
         System.out.println(result);
     }
@@ -27,8 +27,8 @@ public class OneAway {
         return false;
     }
 
-    private boolean checkInsertRemove(String s1, String s2) {       //length of s1 > s2 as we check it above
-        //i = pointer to longer string s1, j = pointer to shorter string s2
+    private boolean checkInsertRemove(String s1, String s2) {       //length of s1 < s2 as we check it above
+        //i = pointer to shorter string s1, j = pointer to longer string s2
         boolean oneEdit = false;
         int i = 0, j = 0;
         while( i < s1.length() && j < s2.length()){
@@ -37,7 +37,7 @@ public class OneAway {
                     return false;
                 }
                 oneEdit = true;
-                i++;
+                j++;
             }else{
                 i++;
                 j++;
