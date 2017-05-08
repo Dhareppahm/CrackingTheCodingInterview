@@ -124,24 +124,24 @@ Rotate by -180:
 		 Left ----- Bottom
 		 */
 		//Layers
-		for(int layer=0; layer < n/2; layer++){
+		for(int layer=0; layer < n/2; layer++) {
 			//Elements
 			int first = layer;
 			int last = n - layer - 1;
-			for(int j= first; j < last; j++){
-				int offset = j - first;
+			for(int i = first; i < last; i++){
+				int offset = i - first;
 				//Inorder to understand this, draw a [3][3] matrix and write the rotation. As per that write code below as you first did.
 
 				//save Top
-				int temp = matrix[first][j];
+				int top = matrix[first][i];
 				//Left -> Top
-				matrix[first][j] = matrix[last - offset][first];
+				matrix[first][i] = matrix[last - offset][first];
 				//Bottom -> Left
 				matrix[last - offset][first] = matrix[last][last - offset];
 				//Right -> Bottom
-				matrix[last][last - offset] = matrix[j][last];
+				matrix[last][last - offset] = matrix[i][last];
 				//Saved Top -> Right
-				matrix[j][last] = temp;
+				matrix[i][last] = top;
 			}			
 		}		
 		return matrix;
@@ -162,19 +162,19 @@ Rotate by -180:
 			int first = layer;
 			int last = n - 1 - first;
 			//Each element
-			for(int j = first; j < last; j++){
-				int offset = j - first;
+			for(int i = first; i < last; i++){
+				int offset = i - first;
 
 				//Save top
-				int temp = matrix[first][j];
+				int top = matrix[first][i];
 				//Right -> Top
-				matrix[first][j] = matrix[j][last];
+				matrix[first][i] = matrix[i][last];
 				//Bottom -> Right
-				matrix[j][last] = matrix [last][last - offset];
+				matrix[i][last] = matrix [last][last - offset];
 				//Left -> Bottom
 				matrix [last][last - offset] = matrix[last - offset][first];
 				//Saved Top -> Left
-				matrix[last - offset][first] = temp;
+				matrix[last - offset][first] = top;
 				
 			}
 		}	
