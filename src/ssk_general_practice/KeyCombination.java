@@ -1,4 +1,4 @@
-package generalpractice;
+package ssk_general_practice;
 
 import java.util.*;
 

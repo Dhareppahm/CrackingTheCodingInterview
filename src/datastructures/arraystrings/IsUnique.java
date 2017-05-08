@@ -27,12 +27,12 @@ public class IsUnique {
 		//complexity - O(n^2), n = length of string
 		boolean isUnique_1 = isUniqueChar_BruteForce(inputString);
 
-		System.out.println("Is Unique = " + isUnique_1);
+		System.out.println("Is Unique (Brute Force) = " + isUnique_1);
 
 		//Better solution : Complexity - O(n), n = length of string
 		boolean isUnique_2 = isUniqueChar(inputString);
 
-		System.out.println("Is Unique = " + isUnique_2);
+		System.out.println("Is Unique (Optimal) = " + isUnique_2);
 
 		s.close();
 	}

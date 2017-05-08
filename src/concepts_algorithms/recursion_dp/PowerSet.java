@@ -2,7 +2,7 @@ package concepts_algorithms.recursion_dp;
 
 import java.util.ArrayList;
 
-public class SubsetsOfSet {
+public class PowerSet {
 
 	//Using Recursion
 	public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set, int index){
@@ -36,7 +36,7 @@ public class SubsetsOfSet {
 	public static void main(String[] args) {
 		
 		ArrayList<Integer> set = new ArrayList<Integer>();
-		set.add(1);	set.add(2); set.add(3); 
+		set.add(1);	set.add(2); set.add(3); set.add(4);
 		
 		ArrayList<ArrayList<Integer>> allSubsets = getSubsets(set, 0);
 

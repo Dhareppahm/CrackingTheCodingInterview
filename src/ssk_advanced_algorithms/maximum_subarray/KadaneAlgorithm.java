@@ -1,4 +1,4 @@
-package advanced_algorithms.maximum_subarray;
+package ssk_advanced_algorithms.maximum_subarray;
 
 /**
  Kadane Algorithm: Find Maximum subarray
@@ -10,15 +10,12 @@ package advanced_algorithms.maximum_subarray;
 Kadane Algorithm:
 
  Initialize:
-    max_ending_here = 0
-    max_so_far = 0
+    max_ending_here = a[0]
+    max_so_far = a[0]
 
  Loop for each element of the array
- (a) max_ending_here = max_ending_here + a[i]
- (b) if(max_ending_here < 0)
-        max_ending_here = 0
- (c) if(max_so_far < max_ending_here)
-        max_so_far = max_ending_here
+ (a) max_ending_here = MAX(a[i], max_ending_here + a[i])
+ (b) max_so_far = MAX(max_so_far, max_ending_here)
  return max_so_far
  */
 public class KadaneAlgorithm {

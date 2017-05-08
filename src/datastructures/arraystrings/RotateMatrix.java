@@ -110,23 +110,38 @@ Rotate by -180:
 	 */
 	private static int[][] rotateMatrixby_plus90(int[][] matrix, int n){
 		/** Here i and j are taken differently. Outer loop represents the layers, and we only need to go till half layers
-	  	 ---> i
+	  	 ---> i (layer)
 	  j	 1	2	3	4
 	  |	 5	6	7	8
 	  v	 9	10	11	12
 	  	 13	14	15	16
+
+
+		 Top  ----- Right
+		 |            |
+		 |            |
+		 |            |
+		 Left ----- Bottom
 		 */
 		//Layers
-		for(int i=0; i < n/2; i++){
+		for(int layer=0; layer < n/2; layer++){
 			//Elements
-			for(int j=i; j < n - i - 1; j++){
-				
+			int first = layer;
+			int last = n - layer - 1;
+			for(int j= first; j < last; j++){
+				int offset = j - first;
 				//Inorder to understand this, draw a [3][3] matrix and write the rotation. As per that write code below as you first did.
-				int temp = matrix[i][j];				
-				matrix[i][j] = matrix[n-j-1][i];
-				matrix[n-j-1][i] = matrix[n-i-1][n-j-1];
-				matrix[n-i-1][n-j-1] = matrix[j][n-i-1];
-				matrix[j][n-i-1] = temp;
+
+				//save Top
+				int temp = matrix[first][j];
+				//Left -> Top
+				matrix[first][j] = matrix[last - offset][first];
+				//Bottom -> Left
+				matrix[last - offset][first] = matrix[last][last - offset];
+				//Right -> Bottom
+				matrix[last][last - offset] = matrix[j][last];
+				//Saved Top -> Right
+				matrix[j][last] = temp;
 			}			
 		}		
 		return matrix;
@@ -135,16 +150,31 @@ Rotate by -180:
 	
 	
 	private static int[][] rotateMatrixby_minus90(int[][]matrix, int n){
+		/**
+		 Top  ----- Right
+		 |            |
+		 |            |
+		 |            |
+		 Left ----- Bottom
+		 */
 		//Layers
-		for(int i = 0; i < n/2 ; i++){
+		for(int layer = 0; layer < n/2 ; layer++){
+			int first = layer;
+			int last = n - 1 - first;
 			//Each element
-			for(int j = i; j < n-i-1; j++){
-				
-				int temp = matrix[i][j];
-				matrix[i][j] = matrix[j][n-i-1];
-				matrix[j][n-i-1] = matrix [n-i-1][n-j-1];
-				matrix [n-i-1][n-j-1] = matrix[n-j-1][i];
-				matrix[n-j-1][i] = temp;
+			for(int j = first; j < last; j++){
+				int offset = j - first;
+
+				//Save top
+				int temp = matrix[first][j];
+				//Right -> Top
+				matrix[first][j] = matrix[j][last];
+				//Bottom -> Right
+				matrix[j][last] = matrix [last][last - offset];
+				//Left -> Bottom
+				matrix [last][last - offset] = matrix[last - offset][first];
+				//Saved Top -> Left
+				matrix[last - offset][first] = temp;
 				
 			}
 		}	

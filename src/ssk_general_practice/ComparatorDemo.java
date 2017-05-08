@@ -1,9 +1,6 @@
-package generalpractice;
+package ssk_general_practice;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 class Person implements Comparable<Person>{
 	int personId;
@@ -71,7 +68,7 @@ public class ComparatorDemo {
 		System.out.println("Original List :");
 		System.out.println(personList);
 		
-		System.out.println("One particular sort order using Comparable");
+		System.out.println("One particular sort order using Comparable: Using PersonId");
 		Collections.sort(personList);
 		System.out.println(personList);
 		

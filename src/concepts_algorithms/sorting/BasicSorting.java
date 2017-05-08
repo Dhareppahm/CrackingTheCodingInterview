@@ -1,4 +1,4 @@
-package datastructures.sorting;
+package concepts_algorithms.sorting;
 
 import java.util.Random;
 import java.util.Scanner;

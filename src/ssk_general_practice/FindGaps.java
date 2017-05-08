@@ -1,4 +1,4 @@
-package generalpractice;
+package ssk_general_practice;
 
 //[0,1,2,50,52,75]
 //"3-49,51,53-74,76-99"
