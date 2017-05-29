@@ -6,7 +6,7 @@ package datastructures.stackqueue.threeinone;
  -------------------------------------------------------------------------------
  Approach 1: (Easy) Fixed Division
 
- Divide array in 3 fixed equal parts [0 - n/3), [n/2 - 2n/3), [2n/3 - n)
+ Divide array in 3 fixed equal parts [0 - n/3), [n/3- 2n/3), [2n/3 - n)
  */
 
 public class FixedMultiStack {

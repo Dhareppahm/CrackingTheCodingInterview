@@ -87,7 +87,7 @@ public class RouteBetweenNodes {
     public static void main(String[] args) {
         Graph graph = createNewGraph();
 
-        Node start = graph.getNode(/*"c"*/ "a");
+        Node start = graph.getNode("d");
         Node end = graph.getNode("f");
 
         boolean isRoutePresent = graph.searchRoute_BFS(graph, start, end);

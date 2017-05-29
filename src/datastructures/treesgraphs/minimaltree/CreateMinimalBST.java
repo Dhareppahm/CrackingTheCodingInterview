@@ -62,7 +62,7 @@ class Tree {
 public class CreateMinimalBST {
     public static void main(String[] args) {
         Tree bst = new Tree();
-        int[] sortedArray = {1,2,3,4,5,6,7,8,9};
+        int[] sortedArray = {2,4,5,6,8,9,10,12};//{1,2,3,4,5,6,7,8,9};
         bst.root = bst.createMinimalBST(sortedArray, 0, sortedArray.length-1);
 
         bst.displayIndorder(bst.root);

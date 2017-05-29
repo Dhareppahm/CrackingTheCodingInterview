@@ -46,7 +46,7 @@ class LinkedList{
 
     /**
      * Approach : Create 2 list pointers (before, after), one with elements less than value x.
-     * Second with values less tham or equal to value x.
+     * Second with values greater than or equal to value x.
      * After we go through all the elements, merge the two lists
      */
     public Node partitionList(int partitionValue){

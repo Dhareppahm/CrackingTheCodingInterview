@@ -110,5 +110,6 @@ public class AnimalShelter {
         System.out.println("Dequeue Dog: "+ shelter.dequeueDog().name);
         System.out.println("Dequeue Cat: "+ shelter.dequeueCat().name);
         System.out.println("Dequeue Cat: "+ shelter.dequeueCat());          //null
+        System.out.println("Dequeue Dog: "+ shelter.dequeueDog().name);
     }
 }

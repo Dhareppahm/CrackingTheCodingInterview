@@ -17,19 +17,19 @@ import java.util.*;
 
  Below used java.util.Stack
  */
-public class StackOfPlates {
+public class StackOfPlates<T> {
     private int threshold;
-    List<Stack<Integer>> stacksList = new ArrayList<>();
+    List<LinkedList<T>> stacksList = new ArrayList<>();
 
     public StackOfPlates(int threshold){
         this.threshold = threshold;
     }
 
-    public void push(int data){
+    public void push(T data){
         //get current stack and push in it
-        Stack<Integer> lastStack = getLastStack();
+        LinkedList<T> lastStack = getLastStack();
         if(lastStack == null || lastStack.size() == threshold){    //if last stack size equal to threshold, create a new stack
-            Stack<Integer> newStack = new Stack<>();
+            LinkedList<T> newStack = new LinkedList<>();
             newStack.push(data);
             stacksList.add(newStack);
         }else{
@@ -37,10 +37,10 @@ public class StackOfPlates {
         }
     }
 
-    public int pop(){
+    public T pop(){
         //get current stack and pop from it
-        Stack<Integer> stack = getLastStack();
-        int value;
+        LinkedList<T> stack = getLastStack();
+        T value;
         if(stack.size() == 1){
             value = stack.pop();
             stacksList.remove(stack);
@@ -50,76 +50,68 @@ public class StackOfPlates {
         return value;
     }
 
-    public int popAt(int index){
-        return leftShift(index, true);
-    }
+    public T popAt(int index){
 
-    private int leftShift(int index, boolean removeTop){
-        Stack<Integer> stack = stacksList.get(index);
+        LinkedList<T> stack = stacksList.get(index);
+        T removedItem = stack.pop();
 
-        int removedItem = 0;
-        if(removeTop){
-            removedItem = stack.pop();          //here we remove top of that index stack
-        }
+        //Rollover
+        rollover(index);
 
-        if(stack.isEmpty()){
-            stacksList.remove(stack);
-        }else if(stacksList.size() > index + 1){        //move top from next to the empty position in previous stack
-            int v = leftShift(index + 1, true);
-            stack.push(v);
-        }
         return removedItem;
-
     }
 
-    private boolean isEmpty(){
-        Stack<Integer> lastStack = getLastStack();
-        if(lastStack == null || lastStack.size() == 0)
-            return true;
-        return false;
+    private void rollover(int index){
+
+        //Remove last stack if empty
+        if(index == stacksList.size() - 1){
+            if(stacksList.get(index).isEmpty()){
+                stacksList.remove(index);
+            }
+        }else{      //rollover
+            T last = stacksList.get(index+1).removeLast();        //last element from next stack
+            stacksList.get(index).push(last);                       //push it to current stack
+            rollover(index+1);                                      //check next stack
+        }
     }
 
-    private Stack getLastStack(){
+
+    private LinkedList<T> getLastStack(){
         if(stacksList.size() == 0)
             return null;
         return stacksList.get(stacksList.size() - 1);
     }
 
     //print stack of plates
-    private static void printStackOfPlates(StackOfPlates stackOfPlates){
-        for(int i=0; i < stackOfPlates.stacksList.size(); i++){
-            Stack<Integer> stack = stackOfPlates.stacksList.get(i);
+    private void printStackOfPlates(){
+        for(int i=0; i < stacksList.size(); i++){
+            LinkedList<T> stack = stacksList.get(i);
             System.out.println(Arrays.toString(stack.toArray()));
         }
     }
 
     public static void main(String[] args) {
-        StackOfPlates stackOfPlates = new StackOfPlates(5);     //say 5 items at max in stack
+        StackOfPlates sop = new StackOfPlates(5);     //say 5 items at max in stack
 
-        stackOfPlates.push(1);stackOfPlates.push(2);stackOfPlates.push(3);stackOfPlates.push(4);stackOfPlates.push(5);
-        stackOfPlates.push(6);stackOfPlates.push(7);stackOfPlates.push(8);stackOfPlates.push(9);stackOfPlates.push(10);
-        stackOfPlates.push(11);stackOfPlates.push(12);
+        sop.push(1);sop.push(2);sop.push(3);sop.push(4);sop.push(5);
+        sop.push(6);sop.push(7);sop.push(8);sop.push(9);sop.push(10);
+        sop.push(11);sop.push(12);
 
         //current stacks status
         System.out.println("Stack initial Status: ");
-        printStackOfPlates(stackOfPlates);
+        sop.printStackOfPlates();
 
-        stackOfPlates.pop();stackOfPlates.pop();stackOfPlates.pop();
+        sop.pop();sop.pop();sop.pop();
 
         System.out.println("Stack Status after 3 pop(): ");
-        printStackOfPlates(stackOfPlates);
+        sop.printStackOfPlates();
 
 
-        stackOfPlates.popAt(0);                 //replace top at index 0 stack = 5 with top of index 1 stack = 9
-        System.out.println("Stack Status after popAt(0): ");
-        printStackOfPlates(stackOfPlates);
+        System.out.println("Stack Status after popAt(0): " + sop.popAt(0));
+        sop.printStackOfPlates();
 
-        stackOfPlates.pop();
+        sop.pop();
         System.out.println("Stack Status after 1 pop(): ");
-        printStackOfPlates(stackOfPlates);
-
-
-
+        sop.printStackOfPlates();
     }
-
 }

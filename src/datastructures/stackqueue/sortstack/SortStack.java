@@ -16,7 +16,7 @@ import java.util.Stack;
        2nd which is used as buffer.
     2. When a new item is to be pushed, we check it with existing top -
         If new item is smaller than existing top -> push new item in main stack
-        Else pop existing tops and push into buffer stack, till new item is smaller than existing top.
+        Else pop existing tops and push into buffer stack, till new item is greater than existing top.
     3. Then push new item and pop items from buffer into main stack.
 
  POP:  We simply pop and return the smallest from top of main stack

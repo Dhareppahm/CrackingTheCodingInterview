@@ -90,6 +90,8 @@ public class RotateMatrix {
 	/**
 O(n^2) time and O(1) space algorithm ( without any workarounds and hanky-panky stuff! )
 
+	 Imp: http://stackoverflow.com/questions/25882480/rotating-a-nxn-matrix-in-java
+
 Rotate by +90:
 	1. Transpose
 	2. Reverse each row
@@ -106,7 +108,7 @@ Rotate by -180:
 	Method 1: Rotate by -90 twice	
 	Method 2: Reverse each column and then reverse each row	
 	Method 3: Reverse by +180 as they are same
-	
+
 	 */
 	private static int[][] rotateMatrixby_plus90(int[][] matrix, int n){
 		/** Here i and j are taken differently. Outer loop represents the layers, and we only need to go till half layers
