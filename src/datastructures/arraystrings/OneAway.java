@@ -9,7 +9,7 @@ public class OneAway {
     public static void main(String[] args) {
         OneAway oa = new OneAway();
         String s1 = "pale";
-        String s2 = "pal";
+        String s2 = "ale";
         boolean result = oa.isOneEditAway(s1, s2);
         System.out.println(result);
     }

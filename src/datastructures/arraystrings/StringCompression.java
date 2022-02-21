@@ -14,6 +14,9 @@ public class StringCompression {
 
         String compressedString = getCompressedString(original);
 		System.out.println("Final Output : "+compressedString);
+
+		String compressedString1 = compressString(original);
+		System.out.println("Final Output 1 : "+compressedString1);
 	}
 	
 	/**
@@ -41,11 +44,37 @@ public class StringCompression {
 		System.out.println("Compressed   : "+ sb.toString());
 		
 		//If the "compressed" string would not become smaller than the original string, your method should return the original string.
-		if(s.length() < sb.length()){
+		return s.length() < sb.length() ? s : sb.toString();
+	}
+
+	/**
+	 * Another solution using prev and curr char pointers
+	 * Complexity: O(n)
+	 */
+	private static String compressString(String s){
+		if(s.length()==0){					//return if empty string
 			return s;
-		}else{
-			return sb.toString();
 		}
+		StringBuilder sb = new StringBuilder();
+		char prev = s.charAt(0);            //init with first char in string
+		int count=0;
+
+		for(int i=0; i < s.length(); i++) {
+			char curr = s.charAt(i);
+			if(prev == curr){
+				count++;
+			}else{
+				sb.append(prev);
+				sb.append(count);
+				prev=curr;
+				count=1;				//reset count to 1 as new char found for first time
+			}
+			if(i==s.length()-1) {		//append last char (curr char) as prev was not set
+				sb.append(curr);
+				sb.append(count);
+			}
+		}
+		return sb.toString().length() < s.length() ? sb.toString() : s;
 	}
 
 }

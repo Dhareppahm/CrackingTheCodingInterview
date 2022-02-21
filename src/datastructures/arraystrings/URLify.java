@@ -15,7 +15,12 @@ public class URLify {
         int trueLen = 13;                           //true length excluding the spaces at end
 
         char[] str = obj.replaceSpaces(s.toCharArray(), trueLen);
-        System.out.println(Arrays.toString(str));
+        System.out.println("Two step approach: " + Arrays.toString(str));
+        System.out.println(new String(str));
+
+        char[] str2 = obj.replaceSpaces_2(s.toCharArray(), trueLen);
+        System.out.println("With extra storage: " + Arrays.toString(str2));
+        System.out.println(new String(str2));
     }
 
     /**
@@ -24,6 +29,8 @@ public class URLify {
      * 2. New counter variable initialization for 2nd pass
      * 3. Start from end as we don't have to worry about overwriting anything
      * 4. If character, put it else add '%', '2', '0'
+     *
+     * Pros: No extra space storage required to store result string
      */
     private char[] replaceSpaces(char[] str, int trueLen) {
         int spaceCount = 0;
@@ -48,8 +55,34 @@ public class URLify {
                 index--;
             }
         }
-
         return str;
     }
 
+    /**
+     * Two index approach: Extra storage required for result char array
+     * Since we can have extra trailing spaces in end, count real spaces in trueLength
+     */
+    private char[] replaceSpaces_2(char[] str, int trueLen) {
+        int spaces = 0;
+        //first pass - count the spaces
+        for(int i=0; i < trueLen; i++){
+            if(str[i] == ' '){
+                spaces++;
+            }
+        }
+        int resultLength = trueLen + spaces * 2;        //result string length
+        char[] result = new char[resultLength];
+        int j = 0;                                      //index for result string
+
+        for (int i = 0; i < resultLength && j < resultLength; i++) {        //imp to break loop once result array is full
+            if (str[i] == ' ') {
+                result[j++] = '%';
+                result[j++] = '2';
+                result[j++] = '0';
+            } else {
+                result[j++] = str[i];
+            }
+        }
+        return result;
+    }
 }
